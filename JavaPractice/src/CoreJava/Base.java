@@ -22,8 +22,15 @@ public class Base {
 //		Base.countDigit();
 //		Base.sumDigitString();
 //		Base.sumDigitString1();
-		Base.firstNonRepeatingChar();
+//		Base.firstNonRepeatingCha
+//		Base.add2num();
 
+	}
+
+	public static void add2num(){
+		int a=2, b=3, sum=0;
+		sum=a+b;
+		System.out.println(sum);
 	}
 
 	public static void firstNonRepeatingChar(){
