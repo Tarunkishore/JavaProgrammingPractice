@@ -10,7 +10,7 @@ public class Base {
 
 //		Base.charSearch();
 //		Base.charCount();
-		Base.reverseWordAtSamePosition1();
+//		Base.reverseWordAtSamePosition1();
 //		Base.reverseNum(12345);
 //		Base.swap2Number(10, 20);
 //		Base.reverseSentence();
@@ -19,7 +19,72 @@ public class Base {
 //		Base.pattern3(5);
 //		Base.pattern2(5);
 //		Base.pattern1(5, 5);
+//		Base.countDigit();
+//		Base.sumDigitString();
+//		Base.sumDigitString1();
+		Base.firstNonRepeatingChar();
 
+	}
+
+	public static void firstNonRepeatingChar(){
+		String str="testingexpress";
+		for(int i=0; i<str.length(); i++){
+			boolean unique=true;
+			for(int j=0; j<str.length(); j++){
+				if(i!=j && str.charAt(i)==str.charAt(j)){
+					unique=false;
+					break;
+				}
+			}
+			if(unique){
+				System.out.println(str.charAt(i));
+				break;
+			}
+		}
+	}
+
+	public static void sumDigitString(){
+		String[] str = {"ja4va", "3fd9jk", "f4g5", "j6h3we"};
+		int totalSum = 0;
+		for (String s : str) {
+			int num = 0;
+			for (int i = 0; i < s.length(); i++) {
+				char c = s.charAt(i);
+				if (c >= '0' && c <= '9') {
+					num = num * 10 + (c - '0');
+				}
+			}
+			totalSum += num;
+		}
+		System.out.println(totalSum); // 151
+	}
+
+	public static void sumDigitString1(){
+		String sentence = "we2lco3me 4to j5ava1 l3ear4ning5 c4ent5er";
+		String[] word = sentence.split(" ");
+		int sum=0;
+		for(String str:word){
+			int num=0;
+			for(int i=0; i<str.length(); i++){
+				char ch=str.charAt(i);
+				if(ch>='0' && ch<='9'){
+					num = num * 10 +(ch-'0');
+				}
+			}
+			sum+=num;
+		}
+		System.out.println(sum);
+	}
+
+
+    public static void countDigit(){
+		int num = 2147483647;
+		int count = 0;
+		while(num!=0){
+			num/=10;
+			count++;
+		}
+		System.out.println("Number of Digit: "+count);
 	}
 	
 	// Character Count in string
