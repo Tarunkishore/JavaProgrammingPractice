@@ -22,9 +22,37 @@ public class Base {
 //		Base.countDigit();
 //		Base.sumDigitString();
 //		Base.sumDigitString1();
-//		Base.firstNonRepeatingCha
+//		Base.firstNonRepeatingChar();
 //		Base.add2num();
+//		Base.findDuplicateChar();
+		Base.findUniqueCharacter();
 
+	}
+
+	public static void findUniqueCharacter(){
+		String str = "Selenium";
+		for(int i=0; i<str.length(); i++){
+			char current=str.charAt(i);
+			int count=0;
+			for(int j=0; j<str.length(); j++){
+				if(current == str.charAt(j)){
+					count++;
+				}
+			}
+			if(count == 1)
+				System.out.print(current);
+		}
+	}
+
+	public static void findDuplicateChar(){
+		String str = "selenium";
+		for(int i=0; i<str.length(); i++){
+			for(int j=0; j<str.length(); j++){
+				if(i!=j && str.charAt(i) == str.charAt(j)){
+					System.out.print(str.charAt(i));
+				}
+			}
+		}
 	}
 
 	public static void add2num(){
