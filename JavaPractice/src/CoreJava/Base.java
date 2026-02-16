@@ -25,8 +25,122 @@ public class Base {
 //		Base.firstNonRepeatingChar();
 //		Base.add2num();
 //		Base.findDuplicateChar();
-		Base.findUniqueCharacter();
+//		Base.findUniqueCharacter();
+//		Base.numberAppearsExactlyValue();
+//		Base.reversePreservingSpecialCharposition();
+//		Base.collectionsCheck();
+//		Base.equalSumPartition();
+		Base.reverseAlternateWordsFirstUpperLastLower();
 
+	}
+
+	public static void reverseAlternateWordsFirstUpperLastLower() {
+		String str = "java is very easy to learn";
+		String[] words = str.split(" ");
+		String result = "";
+		for (int i = 0; i < words.length; i++) {
+			if (i % 2 != 0) {
+				String word = words[i];
+				String reversed = "";
+				for (int j = word.length() - 1; j >= 0; j--) {
+					reversed = reversed + word.charAt(j);
+				}
+				reversed = reversed.substring(0,1).toUpperCase()
+						+ reversed.substring(1);
+				reversed = reversed.substring(0, reversed.length()-1)
+						+ reversed.substring(reversed.length()-1).toLowerCase();
+				result = result + reversed + " ";
+			} else {
+				result = result + words[i] + " ";
+			}
+		}
+		System.out.println(result);
+	}
+
+	public static void equalSumPartition() {
+		int[] arr = {1, 5, 11, 5};
+		int totalSum = 0;
+		for (int i = 0; i < arr.length; i++) {
+			totalSum += arr[i];
+		}
+		if (totalSum % 2 != 0) {
+			System.out.println(false);
+			return;
+		}
+		int target = totalSum / 2;
+		int n = arr.length;
+		int totalSubsets = 1;
+		for (int i = 0; i < n; i++) {
+			totalSubsets = totalSubsets * 2;   // 2^n
+		}
+		for (int i = 0; i < totalSubsets; i++) {
+			int subsetSum = 0;
+			int num = i;
+			for (int j = 0; j < n; j++) {
+				if (num % 2 == 1) {   // include element
+					subsetSum += arr[j];
+				}
+				num = num / 2;   // move to next bit
+			}
+			if (subsetSum == target) {
+				System.out.println(true);
+				return;
+			}
+		}
+		System.out.println(false);
+	}
+
+
+	public static void collectionsCheck(){
+		Collection<String> c = new ArrayList<>();
+			c.add("java");
+			c.add("wel");
+			c.add("java");
+		System.out.println(c);
+	}
+
+	public static void reversePreservingSpecialCharposition() {
+		String input = "Tes#t%in&g";
+		char[] result = new char[input.length()];
+		int j = input.length() - 1;
+		for (int i = 0; i < input.length(); i++) {
+			char ch = input.charAt(i);
+			if (!((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))) {
+				result[i] = ch;   // keep special character at same position
+			} else {
+				while (!((input.charAt(j) >= 'A' && input.charAt(j) <= 'Z') ||
+						(input.charAt(j) >= 'a' && input.charAt(j) <= 'z'))) {
+					j--;
+				}
+				result[i] = input.charAt(j);
+				j--;
+			}
+		}
+		System.out.println(new String(result));
+	}
+
+	public static void numberAppearsExactlyValue(){
+		int[] arr = {1, 2, 3, 4, 5, 2, 4, 4, 4};
+		for (int i = 0; i < arr.length; i++) {
+			int count = 0;
+			for (int j = 0; j < arr.length; j++) {
+				if (arr[i] == arr[j]) {
+					count++;
+				}
+			}
+			if (count == arr[i]) {
+				boolean alreadyPrinted = false;
+				for (int k = 0; k < i; k++) {
+					if (arr[k] == arr[i]) {
+						alreadyPrinted = true;
+						break;
+					}
+				}
+				if (!alreadyPrinted) {
+					System.out.println(arr[i] + " = " + count);
+				}
+			}
+		}
 	}
 
 	public static void findUniqueCharacter(){
