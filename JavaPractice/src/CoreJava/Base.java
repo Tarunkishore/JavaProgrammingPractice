@@ -27,34 +27,81 @@ public class Base {
 //		Base.findDuplicateChar();
 //		Base.findUniqueCharacter();
 //		Base.numberAppearsExactlyValue();
-//		Base.reversePreservingSpecialCharposition();
+//		Base.reversePreservingSpecialCharPosition("Tes#t%in&g");
 //		Base.collectionsCheck();
 //		Base.equalSumPartition();
-		Base.reverseAlternateWordsFirstUpperLastLower();
+//		Base.reverseAlternateWordsFirstUpperLastLower();
+		Base.anagram();
 
+	}
+
+	public static void anagram(){
+		String input1 = "Earth";
+		String input2 = "Heart";
+		boolean anagram=true;
+		input1=input1.toLowerCase();
+		input2=input2.toLowerCase();
+		if(input1.length()==input2.length()){
+			char[] arr1 = input1.toCharArray();
+			char[] arr2 = input2.toCharArray();
+			for(int i=0; i<arr1.length-1; i++){
+				for(int j=0; j<arr2.length-1; j++) {
+					if(arr1[j]>arr1[j+1]){
+						char temp = arr1[j];
+						arr1[j] = arr1[j+1];
+						arr1[j+1] = temp;
+					}
+					if(arr2[j]>arr2[j+1]){
+						char temp = arr2[j];
+						arr2[j] = arr2[j+1];
+						arr2[j+1] = temp;
+					}
+				}
+			}
+			for(int k=0; k<arr1.length; k++){
+				if(arr1[k]!=arr2[k]){
+					anagram=false;
+					break;
+				}
+			}
+			if(anagram){
+				System.out.println("Anagram");
+			}
+			else{
+				System.out.println("Not Anagram");
+			}
+		}
+		else{
+			System.out.println("Not Anagram");
+		}
+		
 	}
 
 	public static void reverseAlternateWordsFirstUpperLastLower() {
 		String str = "java is very easy to learn";
 		String[] words = str.split(" ");
 		String result = "";
-		for (int i = 0; i < words.length; i++) {
-			if (i % 2 != 0) {
+		for(int i=0; i<words.length; i++){
+			if(i%2!=0){
 				String word = words[i];
-				String reversed = "";
-				for (int j = word.length() - 1; j >= 0; j--) {
-					reversed = reversed + word.charAt(j);
+				String rev="";
+				for(int j=word.length()-1; j>=0; j--){
+					char ch = word.charAt(j);
+					if(j==word.length()-1){
+						rev += (ch+"").toUpperCase();
+					} else if (j==0) {
+						rev+=(ch+"").toLowerCase();
+					}else {
+						rev+=ch;
+					}
 				}
-				reversed = reversed.substring(0,1).toUpperCase()
-						+ reversed.substring(1);
-				reversed = reversed.substring(0, reversed.length()-1)
-						+ reversed.substring(reversed.length()-1).toLowerCase();
-				result = result + reversed + " ";
-			} else {
-				result = result + words[i] + " ";
+				result+=rev+" ";
+			}
+			else{
+				result +=words[i]+" ";
 			}
 		}
-		System.out.println(result);
+		System.out.println(result.trim());
 	}
 
 	public static void equalSumPartition() {
@@ -99,8 +146,8 @@ public class Base {
 		System.out.println(c);
 	}
 
-	public static void reversePreservingSpecialCharposition() {
-		String input = "Tes#t%in&g";
+	public static void reversePreservingSpecialCharPosition(String input) {
+//		String input = "Tes#t%in&g";
 		char[] result = new char[input.length()];
 		int j = input.length() - 1;
 		for (int i = 0; i < input.length(); i++) {
