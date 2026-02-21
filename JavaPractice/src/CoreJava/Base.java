@@ -31,8 +31,64 @@ public class Base {
 //		Base.collectionsCheck();
 //		Base.equalSumPartition();
 //		Base.reverseAlternateWordsFirstUpperLastLower();
-		Base.anagram();
+//		Base.anagram();
+//		Base.kthLargest();
+		Base.pattern3();
+//		Base.missingNum();
+	}
 
+	public static void missingNum() {
+		int arr[] = {1, 2, 3, 5};
+		int sum =0;
+		int missingNum=0;
+		int n=arr.length;
+		int max = arr[0];
+		for(int i=0; i<n; i++){
+			sum+=arr[i];
+			if(arr[i] > max) {
+				max = arr[i];
+			}
+		}
+		int expectedSum = max*(max+1)/2;
+		missingNum = expectedSum - sum;
+		System.out.println("Missing number: " + missingNum);
+
+	}
+
+
+	public static void kthLargest() {
+		int[] arr = {5, 3, 9, 1, 5, 9, 7};
+		int k = 2;   // Find 2nd largest element
+		int n = arr.length;
+		int[] temp = new int[n];
+		int uniqueCount = 0;
+		for (int i = 0; i < n; i++) {
+			boolean isDuplicate = false;
+			for (int j = 0; j < uniqueCount; j++) {
+				if (arr[i] == temp[j]) {
+					isDuplicate = true;
+					break;
+				}
+			}
+			if (!isDuplicate) {
+				temp[uniqueCount] = arr[i];
+				uniqueCount++;
+			}
+		}
+		for (int i = 0; i < uniqueCount - 1; i++) {
+			for (int j = 0; j < uniqueCount - i - 1; j++) {
+				if (temp[j] < temp[j + 1]) {
+					int swap = temp[j];
+					temp[j] = temp[j + 1];
+					temp[j + 1] = swap;
+				}
+			}
+		}
+		if (k <= uniqueCount) {
+			System.out.println(k + "th largest element is: " + temp[k - 1]);
+		} else {
+			System.out.println("Invalid value of k");
+		}
 	}
 
 	public static void anagram(){
@@ -74,7 +130,6 @@ public class Base {
 		else{
 			System.out.println("Not Anagram");
 		}
-		
 	}
 
 	public static void reverseAlternateWordsFirstUpperLastLower() {
@@ -209,7 +264,7 @@ public class Base {
 		String str = "selenium";
 		for(int i=0; i<str.length(); i++){
 			for(int j=0; j<str.length(); j++){
-				if(i!=j && str.charAt(i) == str.charAt(j)){
+				if(i!=j && i<j && str.charAt(i) == str.charAt(j)){
 					System.out.print(str.charAt(i));
 				}
 			}
@@ -223,7 +278,7 @@ public class Base {
 	}
 
 	public static void firstNonRepeatingChar(){
-		String str="testingexpress";
+		String str="testingxpress";
 		for(int i=0; i<str.length(); i++){
 			boolean unique=true;
 			for(int j=0; j<str.length(); j++){
@@ -441,6 +496,16 @@ public class Base {
 			rev[chrarray.length - i] = chrarray[i - 1];
 
 			System.out.print(rev[chrarray.length - i]);
+		}
+	}
+
+	public static void pattern3(){
+		int n=3;
+		for(int i=0; i<=n; i++){
+			for(int j=0; j<(2*i)+1; j++){
+				System.out.print((j+1)+" ");
+			}
+			System.out.println();
 		}
 	}
 
