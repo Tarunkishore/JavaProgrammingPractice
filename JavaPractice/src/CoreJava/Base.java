@@ -32,7 +32,7 @@ public class Base {
 //		Base.equalSumPartition();
 //		Base.reverseAlternateWordsFirstUpperLastLower();
 //		Base.anagram();
-//		Base.kthLargest();
+		Base.kthLargest();
 		Base.pattern3();
 		Base.missingNum();
 	}
