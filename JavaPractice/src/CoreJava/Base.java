@@ -34,7 +34,7 @@ public class Base {
 //		Base.anagram();
 //		Base.kthLargest();
 		Base.pattern3();
-//		Base.missingNum();
+		Base.missingNum();
 	}
 
 	public static void missingNum() {
