@@ -7,8 +7,7 @@ public class Patterns {
         Patterns.pattern3();
         Patterns.pattern4();
         Patterns.pattern5();
-//        Patterns.pattern6();
-        Patterns.pattern7();
+        Patterns.pattern6();
     }
 
     public static void pattern1(){
@@ -75,15 +74,7 @@ public class Patterns {
         }
     }
 
-//    public static void pattern6(){
-//        System.out.println("pattern6");
-//        int n=5;
-//        for(int i=0; i<n; i++){
-//
-//        }
-//    }
-
-    public  static void pattern7(){
+    public  static void pattern6(){
         System.out.println("pattern6");
         int n=5;
         for(int i=0; i<n; i++){
