@@ -8,49 +8,134 @@ public class Base {
 
 	public static void main(String[] args) throws FileNotFoundException {
 
-		Base.charSearch();
-		Base.charCount();
-		Base.reverseWordAtSamePosition1();
-		Base.reverseNum(12345);
-		Base.swap2Number(10, 20);
-		Base.reverseSentence();
-		Base.reverseWordsAtSamePosition("Hello world from Java");
-		Base.reverseString("Automation Testing");
-		Base.pattern3(5);
-		Base.pattern2(5);
-		Base.pattern1(5, 5);
-		Base.countDigit();
-		Base.sumDigitString();
-		Base.sumDigitString1();
-		Base.firstNonRepeatingChar();
-		Base.add2num();
-		Base.findDuplicateChar();
-		Base.findUniqueCharacter();
-		Base.numberAppearsExactlyValue();
-		Base.reversePreservingSpecialCharPosition("Tes#t%in&g");
-		Base.collectionsCheck();
-		Base.equalSumPartition();
-		Base.reverseAlternateWordsFirstUpperLastLower();
-		Base.anagram();
-		Base.kthLargest();
-		Base.pattern3();
-		Base.missingNum();
+//		Base.charSearch();
+//		Base.charCount();
+//		Base.reverseWordAtSamePosition1();
+//		Base.reverseNum(12345);
+//		Base.swap2Number(10, 20);
+//		Base.reverseSentence();
+//		Base.reverseWordsAtSamePosition("Hello world from Java");
+//		Base.reverseString("Automation Testing");
+//		Base.pattern3(5);
+//		Base.pattern2(5);
+//		Base.pattern1(5, 5);
+//		Base.countDigit();
+//		Base.sumDigitString();
+//		Base.sumDigitString1();
+//		Base.firstNonRepeatingChar();
+//		Base.add2num();
+//		Base.findDuplicateChar();
+//		Base.findUniqueCharacter();
+//		Base.numberAppearsExactlyValue();
+//		Base.reversePreservingSpecialCharPosition("Tes#t%in&g");
+//		Base.collectionsCheck();
+//		Base.equalSumPartition();
+//		Base.reverseAlternateWordsFirstUpperLastLower();
+//		Base.anagram();
+//		Base.kthLargest();
+//		Base.pattern3();
+//		Base.missingNum();
+//		Base.checkPrimeNumber();
+//		Base.palindromeNumberCheck();
+//		Base.palindromeStringCheck();
+//		Base.findLargestNum();
+//		Base.factorial();
+		Base.armstrong();
+	}
+
+	public static void armstrong(){
+		int num=153, originalNum=num, sum=0;
+		while(num!=0){
+			int digit=num%10;
+			sum+=Math.pow(digit, 3);
+			num=num/10;
+		}
+		if(originalNum==sum){
+			System.out.println(originalNum+": "+sum+": "+"Armstrong");
+		}
+		else{
+			System.out.println(originalNum+": "+sum+": "+"Not Armstrong");
+		}
+	}
+
+	public static void factorial(){
+		int n=6, fact=n;
+		for(int i=n-1; i>0; i--){
+			fact = fact * i;
+		}
+		System.out.println(fact);
+	}
+
+	public static void findLargestNum(){
+		int arr[]={32,43,65,76,21,12,23,54,67,99};
+		int temp=0;
+		for(int i=0; i<arr.length; i++){
+			for(int j=0; j<arr.length; j++){
+				if(i!=j && arr[i]>arr[j]){
+					temp=arr[i];
+					arr[i]=arr[j];
+					arr[j]=temp;
+				}
+			}
+
+		}
+		System.out.print(arr[0]+" "+arr[1]);
+	}
+
+	public static void palindromeStringCheck(){
+		String str="abcba";
+		String rev="";
+		for(int i=str.length()-1; i>=0; i--){
+			rev=rev+str.charAt(i);
+		}
+		if(rev.equals(str)){
+			System.out.println("palindrome");
+		}
+		else{
+			System.out.println("not palindrome");
+		}
+	}
+
+	public static void palindromeNumberCheck(){
+		int num=12321;
+		int rev=0;
+		int originalNum=num;
+		while(num!=0){
+			int digit=num%10;
+			rev=rev*10+digit;
+			num=num/10;
+		}
+		if(originalNum==rev){
+			System.out.println(originalNum+": "+rev+": "+"Palindrom");
+		}
+		else{
+			System.out.println(originalNum+": "+rev+": "+"Not Palindrom");
+		}
+	}
+
+	public static void checkPrimeNumber(){
+		int num=23;
+		boolean flag=true;
+		for(int i=2;i<num;i++){
+			if(num%i==0){
+				flag=false;
+			}
+		}
+		if(flag){
+			System.out.println("Prime Number");
+		}
 	}
 
 	public static void missingNum() {
-		int arr[] = {1, 2, 3, 5};
-		int sum =0;
-		int missingNum=0;
-		int n=arr.length;
-		int max = arr[0];
+		int arr[] = {6, 1, 2, 4, 5};
+		int sum =0, missingNum=0, n=arr.length, max = arr[0];
 		for(int i=0; i<n; i++){
 			sum+=arr[i];
 			if(arr[i] > max) {
 				max = arr[i];
 			}
 		}
-		int expectedSum = max*(max+1)/2;
-		missingNum = expectedSum - sum;
+		missingNum = max*(max+1)/2 - sum;
 		System.out.println("Missing number: " + missingNum);
 
 	}
